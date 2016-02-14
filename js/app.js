@@ -22,9 +22,10 @@ $(document).on('keyup', 'textarea.tweet-compose', function(e){
 
 $('#tweet-submit').on('click', function(){
 	var avatarURL = $('#profile-summary').find('img').attr('src');
-	var fullName = $('#profile-summary').find('p').text();
+	var fullName = $('#profile-summary').find('p').text('Nishu Lahoti');
 	var handle = 'nlahoti';
 	var tweetText = $('#dashboard').find('textarea.tweet-compose').val();
+	
 	var tweet = $('.tweet:first').clone();
 	console.log(tweet);
 
@@ -42,7 +43,31 @@ $('#tweet-submit').on('click', function(){
 });
 
 
+$(document).on({
+	mouseenter: function() {
+		$(this).find('.tweet-actions').show();
+	},
+	mouseleave: function() {
+		$(this).find('.tweet-actions').hide();
+	}
+}, 'div.tweet');
 
+$(document).on('click', '.tweet', function() {
+	$(this).find('.stats').animate({height: 'toggle'});
+
+})
+
+/* My attempt - worked but couldn't apply hover to new tweets
+
+$('.tweet').hover(
+	function(){
+		$(this).find('.tweet-actions').show();
+	},
+	function() {
+		$(this).find('.tweet-actions').hide();
+	});
+
+*/
 });
 
 
